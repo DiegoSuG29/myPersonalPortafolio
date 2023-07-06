@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'widgets/about.dart';
+import 'widgets/contact.dart';
+import 'widgets/portfolio.dart';
+import 'widgets/trajectory.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +20,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF105676)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'My Portfolio'),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const MyHomePage(title: 'My Personal Portfolio'),
+        "/AboutMe": (context) => const AboutMePage(),
+        "/Portfolio": (context) => const PortfolioPage(),
+        "/Trajectory": (context) => const TrajectoryPage(),
+        "/ContactMe": (context) => const ContactPage()
+      },
     );
   }
 }
@@ -33,22 +44,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // leading: const Padding(
-        //   padding: EdgeInsets.only(left: 15.0),
-        //   child: Image(
-        //     image: AssetImage('assets/images/peace.png'),
-        //   ),
-        // ),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: TextButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/AboutMe");
+              },
               icon: const Icon(CupertinoIcons.person),
               label: const Text("About Me"),
             ),
@@ -56,7 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: TextButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/Portfolio");
+              },
               icon: const Icon(CupertinoIcons.bag_fill),
               label: const Text("Portfolio"),
             ),
@@ -64,7 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: TextButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/Trajectory");
+              },
               icon: const Icon(CupertinoIcons.device_laptop),
               label: const Text("Trajectory"),
             ),
@@ -72,7 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 35.0),
             child: TextButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/ContactMe");
+              },
               icon: const Icon(CupertinoIcons.phone),
               label: const Text("Contact"),
             ),
@@ -108,10 +119,19 @@ class _MyHomePageState extends State<MyHomePage> {
                               color: Color(0xFF1486A5),
                             ),
                           ),
+                          const Text(
+                            "Currently in: Aguascalientes, Ags",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                            ),
+                          ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/AboutMe");
+                              },
                               style: const ButtonStyle(
                                   backgroundColor:
                                       MaterialStatePropertyAll<Color>(
@@ -142,10 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Divider(),
-              ),
+              const Divider(height: 75),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -172,7 +189,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(fontSize: 16),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/Portfolio");
+                              },
                               icon: const Icon(CupertinoIcons.arrow_right),
                               iconSize: 35,
                             ),
@@ -199,12 +218,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               size: 125,
                             ),
                             const Text(
-                              "Information about my trajectory, as well as skills and technical abilities",
+                              "Information about my trajectory, as well as professional experience",
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 16),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/Trajectory");
+                              },
                               icon: const Icon(CupertinoIcons.arrow_right),
                               iconSize: 35,
                             )
@@ -236,7 +257,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(fontSize: 16),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/ContactMe");
+                              },
                               icon: const Icon(CupertinoIcons.arrow_right),
                               iconSize: 35,
                             )
