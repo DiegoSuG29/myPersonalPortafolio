@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'widgets/about.dart';
-import 'widgets/contact.dart';
-import 'widgets/portfolio.dart';
-import 'widgets/trajectory.dart';
+import 'widgets/AboutWidgets/about.dart';
+import 'widgets/ContactWidgets/contact.dart';
+import 'widgets/PortfolioWidgets/portfolio.dart';
+import 'widgets/TrajectoryWidgets/trajectory.dart';
 
 void main() {
   runApp(const MyApp());
