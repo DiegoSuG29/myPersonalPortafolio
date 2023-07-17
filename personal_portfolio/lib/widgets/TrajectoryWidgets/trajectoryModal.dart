@@ -41,7 +41,6 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
           color: Colors.transparent,
           child: Container(
             decoration: const BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
@@ -202,7 +201,6 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: widget.done ? Colors.grey.shade100 : Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(

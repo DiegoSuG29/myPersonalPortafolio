@@ -24,7 +24,6 @@ class SkillCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
           border: Border.all(color: Colors.black, width: 5)),
       width: 300,
       child: Padding(
