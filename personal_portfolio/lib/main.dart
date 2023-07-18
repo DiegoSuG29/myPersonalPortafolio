@@ -18,18 +18,164 @@ void main() {
   );
 }
 
+//DARK THEME
 final darkTheme = ThemeData(
-  primarySwatch: Colors.grey,
-  primaryColor: Colors.black,
-  brightness: Brightness.dark,
-  dividerColor: Colors.black12,
+  useMaterial3: true,
+  appBarTheme: const AppBarTheme(
+      color: Color(0xff000e14),
+      titleTextStyle: TextStyle(color: Colors.white, fontSize: 14)),
+  tabBarTheme: const TabBarTheme(
+    labelColor: Color.fromARGB(255, 1, 152, 254),
+    unselectedLabelColor: Colors.white,
+    labelStyle: TextStyle(fontSize: 18),
+    unselectedLabelStyle: TextStyle(fontSize: 16),
+    indicatorColor: Color.fromARGB(255, 1, 152, 254),
+  ),
+  colorScheme: ColorScheme.fromSeed(seedColor: Colors.black).copyWith(
+      brightness: Brightness.dark,
+      background: const Color(0xff001b29),
+      primary: Colors.black,
+      tertiary: const Color(0xFF00377e),
+      inversePrimary: Colors.white), //ColorScheme
+  textTheme: const TextTheme(
+    titleLarge: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 35,
+        color: Colors.white,
+        wordSpacing: 2),
+    titleMedium: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 2,
+        color: Colors.white),
+    titleSmall: TextStyle(
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+        fontSize: 26,
+        wordSpacing: 3),
+    bodySmall: TextStyle(color: Colors.white, fontSize: 14),
+    bodyMedium: TextStyle(color: Colors.white, fontSize: 16),
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(
+      iconColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return const Color.fromARGB(255, 1, 152, 254);
+          }
+          return Colors.white;
+        },
+      ),
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.white;
+          }
+          return const Color.fromARGB(255, 1, 152, 254);
+        },
+      ),
+      textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+          }
+          return const TextStyle(fontSize: 14);
+        },
+      ),
+      foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.black;
+          }
+          return Colors.white;
+        },
+      ),
+    ),
+  ),
 );
 
+//LIGHT THEME
 final lightTheme = ThemeData(
-  primarySwatch: Colors.grey,
-  primaryColor: Colors.white,
-  brightness: Brightness.light,
-  dividerColor: Colors.white54,
+  useMaterial3: true,
+  appBarTheme: const AppBarTheme(
+      color: Color.fromARGB(255, 1, 152, 254),
+      titleTextStyle: TextStyle(color: Colors.white, fontSize: 14)),
+  tabBarTheme: const TabBarTheme(
+    labelColor: Colors.white,
+    unselectedLabelColor: Colors.black,
+    labelStyle: TextStyle(fontSize: 18),
+    unselectedLabelStyle: TextStyle(fontSize: 16),
+    indicatorColor: Colors.white,
+  ),
+  colorScheme: ColorScheme.fromSeed(seedColor: Colors.white).copyWith(
+      brightness: Brightness.light,
+      background: Colors.white,
+      primary: const Color.fromARGB(255, 1, 152, 254),
+      tertiary: const Color(0xff219ebc),
+      inversePrimary: Colors.black), //ColorScheme
+  textTheme: const TextTheme(
+    titleLarge: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 35,
+        color: Colors.black,
+        wordSpacing: 2),
+    titleMedium: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 2,
+        color: Colors.black),
+    titleSmall: TextStyle(
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+        fontSize: 26,
+        wordSpacing: 3),
+    bodySmall: TextStyle(color: Colors.black, fontSize: 14),
+    bodyMedium: TextStyle(color: Colors.black, fontSize: 16),
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(
+      iconColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.white;
+          }
+          return Colors.black;
+        },
+      ),
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.black;
+          }
+          return Colors.white;
+        },
+      ),
+      textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+          }
+          return const TextStyle(fontSize: 14);
+        },
+      ),
+      foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.hovered)) {
+            return Colors.white;
+          }
+          return Colors.black;
+        },
+      ),
+    ),
+  ),
 );
 
 class MyApp extends StatefulWidget {
@@ -105,7 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.orangeAccent,
                 ),
                 inactiveColor: Colors.orangeAccent,
-                activeColor: Colors.indigo,
+                activeColor: Colors.indigoAccent,
                 activeIcon: const Icon(
                   CupertinoIcons.moon_fill,
                   color: Colors.black,
@@ -118,11 +264,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.home, color: Colors.white),
+                  Icon(CupertinoIcons.home),
                   SizedBox(width: 10),
                   Text(
                     "Home",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -131,11 +276,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.person, color: Colors.white),
+                  Icon(CupertinoIcons.person),
                   SizedBox(width: 10),
                   Text(
                     "About Me",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -144,11 +288,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.bag_fill, color: Colors.white),
+                  Icon(CupertinoIcons.bag_fill),
                   SizedBox(width: 10),
                   Text(
                     "Portfolio",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -157,11 +300,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.device_laptop, color: Colors.white),
+                  Icon(CupertinoIcons.device_laptop),
                   SizedBox(width: 10),
                   Text(
                     "Trajectory",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -170,11 +312,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.phone, color: Colors.white),
+                  Icon(CupertinoIcons.phone),
                   SizedBox(width: 10),
                   Text(
                     "Contact",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),

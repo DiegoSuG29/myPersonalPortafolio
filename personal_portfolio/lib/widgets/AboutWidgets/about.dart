@@ -18,6 +18,8 @@ class _AboutMePageState extends State<AboutMePage> {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
+    final textStyling = Theme.of(context).textTheme;
     return Scaffold(
       body: Container(
         child: Padding(
@@ -28,11 +30,10 @@ class _AboutMePageState extends State<AboutMePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 300,
-                    height: 300,
+                    width: 250,
+                    height: 250,
                     foregroundDecoration: BoxDecoration(
-                        border: Border.all(
-                            width: 20, color: const Color(0xFF105676)),
+                        border: Border.all(width: 20, color: coloring.tertiary),
                         borderRadius: BorderRadius.circular(150)),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(150),
@@ -44,6 +45,7 @@ class _AboutMePageState extends State<AboutMePage> {
                     width: 25,
                   ),
                   Card(
+                    color: coloring.primary,
                     child: SizedBox(
                       width: 700,
                       height: 250,
@@ -51,10 +53,14 @@ class _AboutMePageState extends State<AboutMePage> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 20),
                         child: RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                               text:
                                   "Hi, my name is Diego Sú Gómez. I'm a mexican of 21 years of age who is studying a Bachelor in Computer Science at Tec de Monterrey Campus Guadalajara. I am set to graduate in summer '24, and decided to create this website to showcase my portfolio, CV and skills I possess. I am a big fan of coding, web design, data science and math, as well as having other hobbies such as playing and watching both soccer & basketball.\n\nI am a fan of Real Madrid & the Denver Nuggets. I also enjoy watching series, listening to music and hangingout with my friends. I am a very competitive and motivated person, who is always looking to improve and grow.",
-                              style: TextStyle(fontSize: 18)),
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary)),
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -67,17 +73,15 @@ class _AboutMePageState extends State<AboutMePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Card(
+                    color: coloring.primary,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 20),
                       child: Column(
                         children: [
-                          const Text(
+                          Text(
                             "Languages",
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2),
+                            style: textStyling.titleMedium,
                           ),
                           const SizedBox(height: 10),
                           Container(
@@ -167,18 +171,13 @@ class _AboutMePageState extends State<AboutMePage> {
                     ),
                   ),
                   Card(
+                    color: coloring.primary,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 20),
                       child: Column(
                         children: [
-                          const Text(
-                            "Knowledge",
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2),
-                          ),
+                          Text("Knowledge", style: textStyling.titleMedium),
                           const SizedBox(height: 10),
                           Container(
                             alignment: Alignment.center,
@@ -333,17 +332,15 @@ class _AboutMePageState extends State<AboutMePage> {
                     ),
                   ),
                   Card(
+                    color: coloring.primary,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 20),
                       child: Column(
                         children: [
-                          const Text(
+                          Text(
                             "Soft Skills",
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2),
+                            style: textStyling.titleMedium,
                           ),
                           const SizedBox(height: 10),
                           Container(

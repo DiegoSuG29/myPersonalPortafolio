@@ -9,14 +9,14 @@ class PortfolioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
+      body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           child: Column(
             children: [
               Text(
                 "My Projects",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               SizedBox(height: 30),
               SingleChildScrollView(

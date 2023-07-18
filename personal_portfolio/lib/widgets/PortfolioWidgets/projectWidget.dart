@@ -23,7 +23,9 @@ class ProjectWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
     return Card(
+      color: coloring.primary,
       margin: const EdgeInsets.all(16.0),
       elevation: 10,
       child: Column(
@@ -61,7 +63,10 @@ class ProjectWidget extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                         text: description,
-                        style: const TextStyle(fontSize: 16)),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: coloring.inversePrimary,
+                        )),
                     textAlign: TextAlign.justify,
                   ),
                 ),

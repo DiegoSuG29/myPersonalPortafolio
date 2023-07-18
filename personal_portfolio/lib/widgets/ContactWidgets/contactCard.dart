@@ -16,10 +16,12 @@ class ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
     return Card(
+      color: coloring.primary,
       elevation: 50,
       child: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

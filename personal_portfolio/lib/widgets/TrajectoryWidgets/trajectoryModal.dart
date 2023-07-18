@@ -35,16 +35,17 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
   _showModal(context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.transparent,
       builder: (builder) {
+        final coloring = Theme.of(context).colorScheme;
         return Container(
           color: Colors.transparent,
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
               ),
+              color: coloring.tertiary,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -64,9 +65,9 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
                       child: Text(
                         widget.name,
                         style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.black87),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                     Container(
@@ -75,12 +76,12 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text(
+                          child: Text(
                             "Close",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff999999),
+                              color: coloring.inversePrimary,
                             ),
                           ),
                         )),
@@ -92,7 +93,6 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
                   decoration: const BoxDecoration(
                     border: Border(
                       top: BorderSide(
-                        color: Color(0xfff8f8f8),
                         width: 1,
                       ),
                     ),
@@ -104,11 +104,12 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
                         textAlign: TextAlign.justify,
                         text: TextSpan(
                             text: widget.school,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.black,
-                                wordSpacing: 1)),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              wordSpacing: 1,
+                              color: coloring.inversePrimary,
+                            )),
                       ),
                       const SizedBox(
                         height: 10,
@@ -152,7 +153,10 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   RichText(
-                                    text: TextSpan(text: widget.description),
+                                    text: TextSpan(
+                                        text: widget.description,
+                                        style: TextStyle(
+                                            color: coloring.inversePrimary)),
                                     textAlign: TextAlign.justify,
                                   )
                                 ],
@@ -200,15 +204,17 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
     return Card(
+      color: coloring.tertiary,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             Image(
               image: AssetImage(widget.img),
-              width: 150,
-              height: 150,
+              width: 125,
+              height: 125,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),

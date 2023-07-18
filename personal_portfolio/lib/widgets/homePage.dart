@@ -6,6 +6,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
+    final textStyling = Theme.of(context).textTheme;
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -17,30 +19,24 @@ class HomePage extends StatelessWidget {
                 Card(
                   elevation: 50,
                   borderOnForeground: true,
+                  color: coloring.primary,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
                       children: [
-                        const Text(
+                        Text(
                           "Hi, I'm Diego",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: textStyling.bodyMedium,
                         ),
-                        const Text(
+                        const SizedBox(height: 5),
+                        Text(
                           "Computer Science Undergrad",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xFF1486A5),
-                          ),
+                          style: textStyling.bodyMedium,
                         ),
-                        const Text(
+                        const SizedBox(height: 5),
+                        Text(
                           "Currently in: Aguascalientes, Ags",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
+                          style: textStyling.bodySmall,
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
@@ -61,10 +57,9 @@ class HomePage extends StatelessWidget {
                     width: 300,
                     height: 300,
                     foregroundDecoration: BoxDecoration(
-                        border: Border.all(
-                            width: 20,
-                            color: Theme.of(context).colorScheme.secondary),
-                        borderRadius: BorderRadius.circular(150)),
+                      border: Border.all(width: 20, color: coloring.tertiary),
+                      borderRadius: BorderRadius.circular(150),
+                    ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(150),
                       child: const Image(
@@ -74,107 +69,110 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            const Divider(height: 75),
+            const SizedBox(height: 75),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  width: 400,
-                  child: Card(
-                    elevation: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 15, 12, 10),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "My Projects",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          ),
-                          const Icon(
-                            CupertinoIcons.folder_fill,
-                            size: 125,
-                          ),
-                          const Text(
-                            "Review my featured projects and gain more insight on what I've done",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          IconButton(
+                Card(
+                  color: coloring.primary,
+                  elevation: 50,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 15, 12, 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          "My Projects",
+                          style: textStyling.titleSmall,
+                        ),
+                        const Icon(
+                          CupertinoIcons.folder_fill,
+                          size: 125,
+                        ),
+                        Text(
+                          "Review my featured projects and gain more insight on what I've done",
+                          textAlign: TextAlign.center,
+                          style: textStyling.bodySmall,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: IconButton(
                             onPressed: () {
                               Navigator.pushNamed(context, "/Portfolio");
                             },
                             icon: const Icon(CupertinoIcons.arrow_right),
                             iconSize: 35,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 400,
-                  child: Card(
-                    elevation: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(12, 15, 12, 10),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "Academic/Professional History",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          ),
-                          const Icon(
-                            CupertinoIcons.book,
-                            size: 125,
-                          ),
-                          const Text(
-                            "Information about my trajectory, as well as professional experience",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          IconButton(
+                Card(
+                  color: coloring.primary,
+                  elevation: 50,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 15, 12, 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Academic/Professional History",
+                          style: textStyling.titleSmall,
+                        ),
+                        const Icon(
+                          CupertinoIcons.book,
+                          size: 125,
+                        ),
+                        Text(
+                          "Information about my trajectory, as well as professional experience",
+                          textAlign: TextAlign.center,
+                          style: textStyling.bodySmall,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: IconButton(
                             onPressed: () {
                               Navigator.pushNamed(context, "/Trajectory");
                             },
                             icon: const Icon(CupertinoIcons.arrow_right),
                             iconSize: 35,
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 SizedBox(
                   width: 400,
                   child: Card(
+                    color: coloring.primary,
                     elevation: 50,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(12, 15, 12, 10),
                       child: Column(
                         children: [
-                          const Text(
+                          Text(
                             "Contact Me",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                            style: textStyling.titleSmall,
                           ),
                           const Icon(
                             CupertinoIcons.phone_circle,
                             size: 125,
                           ),
-                          const Text(
+                          Text(
                             "Get my contact information and my CV for download",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
+                            style: textStyling.bodySmall,
                           ),
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, "/ContactMe");
-                            },
-                            icon: const Icon(CupertinoIcons.arrow_right),
-                            iconSize: 35,
-                          )
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/ContactMe");
+                              },
+                              icon: const Icon(CupertinoIcons.arrow_right),
+                              iconSize: 35,
+                            ),
+                          ),
                         ],
                       ),
                     ),

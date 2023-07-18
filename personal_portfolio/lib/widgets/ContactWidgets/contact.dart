@@ -8,6 +8,7 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
         child: Padding(
@@ -22,8 +23,8 @@ class ContactPage extends StatelessWidget {
                       width: 200,
                       height: 200,
                       foregroundDecoration: BoxDecoration(
-                          border: Border.all(
-                              width: 20, color: const Color(0xFF105676)),
+                          border:
+                              Border.all(width: 20, color: coloring.tertiary),
                           borderRadius: BorderRadius.circular(150)),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(150),
@@ -31,7 +32,8 @@ class ContactPage extends StatelessWidget {
                             image: AssetImage("assets/images/me.jpg")),
                       ),
                     ),
-                    const Card(
+                    Card(
+                      color: coloring.primary,
                       elevation: 50,
                       child: Padding(
                         padding: EdgeInsets.all(20),
@@ -54,11 +56,12 @@ class ContactPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Card(
+                      color: coloring.primary,
                       elevation: 50,
                       child: SizedBox(
                         width: 1000,
@@ -108,6 +111,7 @@ class ContactPage extends StatelessWidget {
                       ),
                     ),
                     Card(
+                      color: coloring.primary,
                       elevation: 50,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -134,7 +138,7 @@ class ContactPage extends StatelessWidget {
                   ],
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 15),
+                  padding: EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

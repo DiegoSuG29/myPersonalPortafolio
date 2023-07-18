@@ -7,19 +7,21 @@ class TrajectoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coloring = Theme.of(context).colorScheme;
     return Scaffold(
-      body: const Padding(
+      body: Padding(
         padding: EdgeInsets.only(top: 10),
         child: Center(
           child: Column(
             children: [
               Text(
                 "Academic & Professional Experience",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Card(
+                  color: coloring.primary,
                   elevation: 50,
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, left: 25, bottom: 10),
@@ -71,6 +73,7 @@ class TrajectoryPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Card(
+                  color: coloring.primary,
                   elevation: 50,
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, left: 25, bottom: 10),
