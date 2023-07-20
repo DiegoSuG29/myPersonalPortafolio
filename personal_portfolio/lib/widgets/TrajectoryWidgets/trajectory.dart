@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/widgets/TrajectoryWidgets/trajectoryModal.dart';
 
@@ -10,7 +9,7 @@ class TrajectoryPage extends StatelessWidget {
     final coloring = Theme.of(context).colorScheme;
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10),
         child: Center(
           child: Column(
             children: [
@@ -19,11 +18,11 @@ class TrajectoryPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Card(
                   color: coloring.primary,
                   elevation: 50,
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.only(top: 10, left: 25, bottom: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,13 +68,13 @@ class TrajectoryPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Card(
                   color: coloring.primary,
                   elevation: 50,
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.only(top: 10, left: 25, bottom: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

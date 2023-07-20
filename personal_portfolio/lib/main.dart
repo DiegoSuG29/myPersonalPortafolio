@@ -20,172 +20,180 @@ void main() {
 
 //DARK THEME
 final darkTheme = ThemeData(
-  useMaterial3: true,
-  appBarTheme: const AppBarTheme(
-      color: Color(0xff000e14),
-      titleTextStyle: TextStyle(color: Colors.white, fontSize: 14)),
-  tabBarTheme: const TabBarTheme(
-    labelColor: Color.fromARGB(255, 1, 152, 254),
-    unselectedLabelColor: Colors.white,
-    labelStyle: TextStyle(fontSize: 18),
-    unselectedLabelStyle: TextStyle(fontSize: 16),
-    indicatorColor: Color.fromARGB(255, 1, 152, 254),
-  ),
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.black).copyWith(
-      brightness: Brightness.dark,
-      background: const Color(0xff001b29),
-      primary: Colors.black,
-      tertiary: const Color(0xFF00377e),
-      inversePrimary: Colors.white), //ColorScheme
-  textTheme: const TextTheme(
-    titleLarge: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 35,
-        color: Colors.white,
-        wordSpacing: 2),
-    titleMedium: TextStyle(
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 2,
-        color: Colors.white),
-    titleSmall: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: Colors.white,
-        fontSize: 26,
-        wordSpacing: 3),
-    bodySmall: TextStyle(color: Colors.white, fontSize: 14),
-    bodyMedium: TextStyle(color: Colors.white, fontSize: 16),
-  ),
-  iconButtonTheme: IconButtonThemeData(
-    style: ButtonStyle(
-      iconColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
-            return const Color.fromARGB(255, 1, 152, 254);
-          }
-          return Colors.white;
-        },
-      ),
+    useMaterial3: true,
+    appBarTheme: const AppBarTheme(
+        color: Color(0xff000e14),
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 14)),
+    tabBarTheme: const TabBarTheme(
+      labelColor: Color.fromARGB(255, 1, 152, 254),
+      unselectedLabelColor: Colors.white,
+      labelStyle: TextStyle(fontSize: 18),
+      unselectedLabelStyle: TextStyle(fontSize: 16),
+      indicatorColor: Color.fromARGB(255, 1, 152, 254),
     ),
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.black).copyWith(
+        brightness: Brightness.dark,
+        background: const Color(0xff001b29),
+        primary: Colors.black,
+        secondary: Colors.grey,
+        tertiary: const Color(0xFF00377e),
+        primaryContainer: const Color.fromARGB(255, 1, 152, 254),
+        inversePrimary: Colors.white),
+    //ColorScheme
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 35,
+          color: Colors.white,
+          wordSpacing: 2),
+      titleMedium: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 2,
+          color: Colors.white),
+      titleSmall: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+          fontSize: 26,
+          wordSpacing: 3),
+      bodySmall: TextStyle(color: Colors.white, fontSize: 14),
+      bodyMedium: TextStyle(color: Colors.white, fontSize: 16),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        iconColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return const Color.fromARGB(255, 1, 152, 254);
+            }
             return Colors.white;
-          }
-          return const Color.fromARGB(255, 1, 152, 254);
-        },
-      ),
-      textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
-            return const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
-          }
-          return const TextStyle(fontSize: 14);
-        },
-      ),
-      foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
-            return Colors.black;
-          }
-          return Colors.white;
-        },
+          },
+        ),
       ),
     ),
-  ),
-);
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Colors.white;
+            }
+            if (states.contains(MaterialState.disabled)) {
+              return Colors.grey;
+            }
+            return const Color.fromARGB(255, 1, 152, 254);
+          },
+        ),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+            }
+            return const TextStyle(fontSize: 14);
+          },
+        ),
+        foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Colors.black;
+            }
+            return Colors.white;
+          },
+        ),
+      ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+        selectionColor: Color.fromARGB(255, 1, 152, 254)));
 
 //LIGHT THEME
 final lightTheme = ThemeData(
-  useMaterial3: true,
-  appBarTheme: const AppBarTheme(
-      color: Color.fromARGB(255, 1, 152, 254),
-      titleTextStyle: TextStyle(color: Colors.white, fontSize: 14)),
-  tabBarTheme: const TabBarTheme(
-    labelColor: Colors.white,
-    unselectedLabelColor: Colors.black,
-    labelStyle: TextStyle(fontSize: 18),
-    unselectedLabelStyle: TextStyle(fontSize: 16),
-    indicatorColor: Colors.white,
-  ),
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.white).copyWith(
-      brightness: Brightness.light,
-      background: Colors.white,
-      primary: const Color.fromARGB(255, 1, 152, 254),
-      tertiary: const Color(0xff219ebc),
-      inversePrimary: Colors.black), //ColorScheme
-  textTheme: const TextTheme(
-    titleLarge: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 35,
-        color: Colors.black,
-        wordSpacing: 2),
-    titleMedium: TextStyle(
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 2,
-        color: Colors.black),
-    titleSmall: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
-        fontSize: 26,
-        wordSpacing: 3),
-    bodySmall: TextStyle(color: Colors.black, fontSize: 14),
-    bodyMedium: TextStyle(color: Colors.black, fontSize: 16),
-  ),
-  iconButtonTheme: IconButtonThemeData(
-    style: ButtonStyle(
-      iconColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
-            return Colors.white;
-          }
-          return Colors.black;
-        },
-      ),
+    useMaterial3: true,
+    appBarTheme: const AppBarTheme(
+        color: Color.fromARGB(255, 1, 152, 254),
+        titleTextStyle: TextStyle(color: Colors.white, fontSize: 14)),
+    tabBarTheme: const TabBarTheme(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.black,
+      labelStyle: TextStyle(fontSize: 18),
+      unselectedLabelStyle: TextStyle(fontSize: 16),
+      indicatorColor: Colors.white,
     ),
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.white).copyWith(
+        brightness: Brightness.light,
+        background: const Color(0xffAEE2FF),
+        primary: Colors.white,
+        secondary: const Color(0xff1D5D9B),
+        tertiary: const Color.fromARGB(255, 99, 212, 253),
+        primaryContainer: const Color.fromARGB(255, 1, 152, 254),
+        inversePrimary: Colors.black), //ColorScheme
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 35,
+          color: Colors.black,
+          wordSpacing: 2),
+      titleMedium: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 2,
+          color: Colors.black),
+      titleSmall: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+          fontSize: 26,
+          wordSpacing: 3),
+      bodySmall: TextStyle(color: Colors.black, fontSize: 14),
+      bodyMedium: TextStyle(color: Colors.black, fontSize: 16),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        iconColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return const Color.fromARGB(255, 1, 152, 254);
+            }
             return Colors.black;
-          }
-          return Colors.white;
-        },
-      ),
-      textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
-            return const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
-          }
-          return const TextStyle(fontSize: 14);
-        },
-      ),
-      foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.hovered)) {
-            return Colors.white;
-          }
-          return Colors.black;
-        },
+          },
+        ),
       ),
     ),
-  ),
-);
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return const Color.fromARGB(255, 1, 152, 254);
+            }
+            if (states.contains(MaterialState.disabled)) {
+              return Colors.grey;
+            }
+            return Colors.white;
+          },
+        ),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return const TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
+            }
+            return const TextStyle(fontSize: 14);
+          },
+        ),
+        foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Colors.white;
+            }
+            return Colors.black;
+          },
+        ),
+      ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+        selectionColor: Color.fromARGB(255, 1, 152, 254)));
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
@@ -193,14 +201,9 @@ class _MyAppState extends State<MyApp> {
       title: 'My Personal Portfolio',
       debugShowCheckedModeBanner: false,
       theme: themeNotifier.getTheme(),
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const MyHomePage(title: 'My Personal Portfolio'),
-        "/AboutMe": (context) => const AboutMePage(),
-        "/Portfolio": (context) => const PortfolioPage(),
-        "/Trajectory": (context) => const TrajectoryPage(),
-        "/ContactMe": (context) => const ContactPage()
-      },
+      home: const MyHomePage(
+        title: "My Personal Portfolio",
+      ),
     );
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, avoid_web_libraries_in_flutter
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';

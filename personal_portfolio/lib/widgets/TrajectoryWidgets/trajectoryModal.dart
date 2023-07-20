@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, avoid_web_libraries_in_flutter
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
@@ -41,12 +43,12 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
           color: Colors.transparent,
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
               ),
               color: coloring.tertiary,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 10.0,

@@ -1,9 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
@@ -96,9 +103,8 @@ class HomePage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, "/Portfolio");
-                            },
+                            onPressed: () =>
+                                DefaultTabController.of(context).animateTo(2),
                             icon: const Icon(CupertinoIcons.arrow_right),
                             iconSize: 35,
                           ),
@@ -130,9 +136,8 @@ class HomePage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 5),
                           child: IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, "/Trajectory");
-                            },
+                            onPressed: () =>
+                                DefaultTabController.of(context).animateTo(3),
                             icon: const Icon(CupertinoIcons.arrow_right),
                             iconSize: 35,
                           ),
@@ -166,9 +171,8 @@ class HomePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: IconButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, "/ContactMe");
-                              },
+                              onPressed: () =>
+                                  DefaultTabController.of(context).animateTo(4),
                               icon: const Icon(CupertinoIcons.arrow_right),
                               iconSize: 35,
                             ),

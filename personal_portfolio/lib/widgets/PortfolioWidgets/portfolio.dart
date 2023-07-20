@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/widgets/PortfolioWidgets/projectWidget.dart';
 import 'package:simple_icons/simple_icons.dart';
@@ -11,15 +10,15 @@ class PortfolioPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           child: Column(
             children: [
               Text(
                 "My Projects",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              SizedBox(height: 30),
-              SingleChildScrollView(
+              const SizedBox(height: 30),
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
