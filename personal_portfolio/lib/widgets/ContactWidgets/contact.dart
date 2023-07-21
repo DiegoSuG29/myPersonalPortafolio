@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'contactCard.dart';
+import 'package:emailjs/emailjs.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -16,15 +17,70 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   final _formKey = GlobalKey<FormState>();
   bool enableButton = false;
-  TextEditingController emailController = TextEditingController();
-  TextEditingController subjectController = TextEditingController();
-  TextEditingController messageController = TextEditingController();
+  TextEditingController emailController = TextEditingController(text: "");
+  TextEditingController subjectController = TextEditingController(text: "");
+  TextEditingController messageController = TextEditingController(text: "");
   ScrollController scrollbarController = ScrollController();
 
   downloadFile(url) {
     AnchorElement anchorElement = AnchorElement(href: url);
     anchorElement.download = "CV";
     anchorElement.click();
+  }
+
+  Future<void> sendEmail() async {
+    Map<String, dynamic> emailParams = {
+      "email": emailController.text.trim(),
+      "subject": subjectController.text.trim(),
+      "message": messageController.text.trim(),
+    };
+    try {
+      await EmailJS.send(
+          "service_mty8a7q",
+          "template_agihpf2",
+          emailParams,
+          const Options(
+              publicKey: "QuZv2yNU-CGx2ZkSC",
+              privateKey: "U5Vk5nJsvc3YQ3N-OpSdk"));
+    } catch (error) {
+      print(error.toString());
+    }
+    _showSimpleDialog();
+  }
+
+  Future<void> _showSimpleDialog() async {
+    await showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            title: Text(
+              'Success!',
+              style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            ),
+            children: [
+              Center(
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "E-mail sent succesfully, thanks for reaching out!",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary),
+                    ),
+                    const SizedBox(height: 10),
+                    SimpleDialogOption(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -186,7 +242,8 @@ class _ContactPageState extends State<ContactPage> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: ElevatedButton.icon(
-                                      onPressed: enableButton ? () {} : null,
+                                      onPressed:
+                                          enableButton ? sendEmail : null,
                                       icon: const Icon(
                                           CupertinoIcons.arrow_right_square),
                                       label: const Text("Send"),
