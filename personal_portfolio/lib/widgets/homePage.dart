@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     final textStyling = Theme.of(context).textTheme;
     return SingleChildScrollView(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
             Row(
@@ -76,7 +76,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 75),
+            Divider(
+                height: MediaQuery.of(context).size.height * 0.0725,
+                color: Colors.transparent),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

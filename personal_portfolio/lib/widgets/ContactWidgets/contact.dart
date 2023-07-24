@@ -94,9 +94,9 @@ class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Center(
           child: Column(
             children: [

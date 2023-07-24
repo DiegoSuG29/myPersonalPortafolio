@@ -325,13 +325,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ]),
         ),
-        body: const TabBarView(children: [
-          HomePage(),
-          AboutMePage(),
-          PortfolioPage(),
-          TrajectoryPage(),
-          ContactPage(),
-        ]),
+        body: const TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              HomePage(),
+              AboutMePage(),
+              PortfolioPage(),
+              TrajectoryPage(),
+              ContactPage(),
+            ]),
       ),
     );
   }

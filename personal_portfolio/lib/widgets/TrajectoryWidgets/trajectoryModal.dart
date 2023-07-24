@@ -215,8 +215,8 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
           children: [
             Image(
               image: AssetImage(widget.img),
-              width: 125,
-              height: 125,
+              width: 100,
+              height: 100,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),

@@ -20,9 +20,9 @@ class _AboutMePageState extends State<AboutMePage> {
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
     final textStyling = Theme.of(context).textTheme;
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(10),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(15),
         child: Column(
           children: [
             Row(
