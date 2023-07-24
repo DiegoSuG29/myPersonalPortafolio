@@ -32,12 +32,12 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       children: [
                         Text(
-                          "Hi, I'm Diego",
+                          "Hi, I'm Diego, welcome to my Webpage.",
                           style: textStyling.bodyMedium,
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          "Computer Science Undergrad",
+                          "I'm a Computer Science Undergrad",
                           style: textStyling.bodyMedium,
                         ),
                         const SizedBox(height: 5),
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "/AboutMe");
+                              DefaultTabController.of(context).animateTo(1);
                             },
                             child: const Text("Know more about me!"),
                           ),
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                           size: 125,
                         ),
                         Text(
-                          "Information about my trajectory, as well as professional experience",
+                          "Information about my trajectory, as well as my professional experience",
                           textAlign: TextAlign.center,
                           style: textStyling.bodySmall,
                         ),

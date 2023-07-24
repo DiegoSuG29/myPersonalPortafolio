@@ -289,7 +289,7 @@ class _ContactPageState extends State<ContactPage> {
               const Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ContactCard(
                         name: "Email",
