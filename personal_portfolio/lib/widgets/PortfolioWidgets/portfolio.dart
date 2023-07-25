@@ -15,18 +15,22 @@ class _PortfolioPageState extends State<PortfolioPage> {
   @override
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
-    return SingleChildScrollView(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-          child: Column(
-            children: [
-              Text(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: Column(
+          children: [
+            Flexible(
+              flex: 9,
+              child: Text(
                 "My Projects",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const SizedBox(height: 30),
-              RawScrollbar(
+            ),
+            const Spacer(),
+            Flexible(
+              flex: 90,
+              child: RawScrollbar(
                 thumbColor: coloring.inversePrimary,
                 thumbVisibility: true,
                 scrollbarOrientation: ScrollbarOrientation.bottom,
@@ -99,8 +103,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

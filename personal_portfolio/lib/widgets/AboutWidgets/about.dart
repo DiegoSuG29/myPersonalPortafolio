@@ -20,17 +20,18 @@ class _AboutMePageState extends State<AboutMePage> {
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
     final textStyling = Theme.of(context).textTheme;
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      child: Column(
+        children: [
+          Flexible(
+            flex: 4,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 250,
-                  height: 250,
+                  width: MediaQuery.of(context).size.height * 0.25,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   foregroundDecoration: BoxDecoration(
                       border: Border.all(width: 20, color: coloring.tertiary),
                       borderRadius: BorderRadius.circular(150)),
@@ -46,20 +47,19 @@ class _AboutMePageState extends State<AboutMePage> {
                 Card(
                   color: coloring.primary,
                   child: SizedBox(
-                    width: 700,
-                    height: 250,
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    height: MediaQuery.of(context).size.height * 0.3,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 20),
-                      child: RichText(
-                        text: TextSpan(
-                            text:
-                                "Hi, my name is Diego Sú Gómez. I'm a mexican of 21 years of age who is studying a Bachelor in Computer Science at Tec de Monterrey Campus Guadalajara. I am set to graduate in summer '24, and decided to create this website to showcase my portfolio, CV and skills I possess. I am a big fan of coding, web design, data science and math, as well as having other hobbies such as playing and watching both soccer & basketball.\n\nI am a fan of Real Madrid & the Denver Nuggets. I also enjoy watching series, listening to music and hangingout with my friends. I am a very competitive and motivated person, who is always looking to improve and grow.",
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary)),
+                          horizontal: 14, vertical: 20),
+                      child: Text(
+                        "Hi, my name is Diego Sú Gómez. I'm a mexican of 21 years of age who is studying a Bachelor in Computer Science at Tec de Monterrey Campus Guadalajara. I am set to graduate in summer '24, and decided to create this website to showcase my portfolio, CV and skills I possess. I am a big fan of coding, web design, data science and math, as well as having other hobbies such as playing and watching both soccer & basketball. I am a fan of Real Madrid & the Denver Nuggets. I also enjoy watching series, listening to music and hangingout with my friends. I am a very competitive and motivated person, who is always looking to improve and grow.",
+                        softWrap: true,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: coloring.inversePrimary,
+                        ),
+                        overflow: TextOverflow.clip,
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -67,8 +67,11 @@ class _AboutMePageState extends State<AboutMePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
-            Row(
+          ),
+          const Spacer(),
+          Flexible(
+            flex: 8,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Card(
@@ -85,8 +88,8 @@ class _AboutMePageState extends State<AboutMePage> {
                         const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.center,
-                          width: 300,
-                          height: 250,
+                          width: MediaQuery.of(context).size.height * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.325,
                           margin: const EdgeInsets.all(10),
                           child: Stack(
                             children: [
@@ -94,7 +97,8 @@ class _AboutMePageState extends State<AboutMePage> {
                                 carouselController: carouselController,
                                 options: CarouselOptions(
                                   autoPlay: true,
-                                  height: 300,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.325,
                                   enlargeCenterPage: true,
                                 ),
                                 items: const [
@@ -180,8 +184,8 @@ class _AboutMePageState extends State<AboutMePage> {
                         const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.center,
-                          width: 300,
-                          height: 250,
+                          width: MediaQuery.of(context).size.height * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.325,
                           margin: const EdgeInsets.all(10),
                           child: Stack(
                             children: [
@@ -189,7 +193,8 @@ class _AboutMePageState extends State<AboutMePage> {
                                 carouselController: carousel2Controller,
                                 options: CarouselOptions(
                                   autoPlay: true,
-                                  height: 300,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.325,
                                   enlargeCenterPage: true,
                                 ),
                                 items: const [
@@ -343,8 +348,8 @@ class _AboutMePageState extends State<AboutMePage> {
                         const SizedBox(height: 10),
                         Container(
                           alignment: Alignment.center,
-                          width: 300,
-                          height: 250,
+                          width: MediaQuery.of(context).size.height * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.325,
                           margin: const EdgeInsets.all(10),
                           child: Stack(
                             children: [
@@ -352,7 +357,8 @@ class _AboutMePageState extends State<AboutMePage> {
                                 carouselController: carousel3Controller,
                                 options: CarouselOptions(
                                   autoPlay: true,
-                                  height: 300,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.325,
                                   enlargeCenterPage: true,
                                 ),
                                 items: const [
@@ -463,8 +469,8 @@ class _AboutMePageState extends State<AboutMePage> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/themeNotifier.dart';
-import 'package:personal_portfolio/widgets/homePage.dart';
+import 'package:personal_portfolio/widgets/HomePageWidgets/homePage.dart';
 import 'widgets/AboutWidgets/about.dart';
 import 'widgets/ContactWidgets/contact.dart';
 import 'widgets/PortfolioWidgets/portfolio.dart';

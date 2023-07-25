@@ -89,23 +89,26 @@ class _ContactPageState extends State<ContactPage> {
     emailController.dispose();
     subjectController.dispose();
     messageController.dispose();
+    scrollbarController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Center(
-          child: Column(
-            children: [
-              Row(
+    final textStyling = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Center(
+        child: Column(
+          children: [
+            Flexible(
+              flex: 25,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 200,
-                    height: 200,
+                    width: MediaQuery.of(context).size.height * 0.2,
+                    height: MediaQuery.of(context).size.height * 0.2,
                     foregroundDecoration: BoxDecoration(
                         border: Border.all(width: 20, color: coloring.tertiary),
                         borderRadius: BorderRadius.circular(150)),
@@ -119,17 +122,20 @@ class _ContactPageState extends State<ContactPage> {
                   Card(
                     color: coloring.primary,
                     elevation: 50,
-                    child: const Padding(
-                      padding: EdgeInsets.all(20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         children: [
-                          Text(
-                            "Contact Me",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30),
+                          Flexible(
+                            flex: 2,
+                            child: Text(
+                              "Contact Me",
+                              style: textStyling.titleMedium,
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10.0),
+                          const Spacer(),
+                          const Flexible(
+                            flex: 2,
                             child: Text(
                                 "Get my information, socials, and where you can find me",
                                 style: TextStyle(fontSize: 20)),
@@ -140,16 +146,19 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              Row(
+            ),
+            const Spacer(flex: 5),
+            Flexible(
+              flex: 50,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Card(
                     color: coloring.primary,
                     elevation: 50,
                     child: SizedBox(
-                      width: 1000,
-                      height: 300,
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.45,
                       child: RawScrollbar(
                         thumbColor: coloring.inversePrimary,
                         thumbVisibility: true,
@@ -170,11 +179,9 @@ class _ContactPageState extends State<ContactPage> {
                                   horizontal: 18, vertical: 18),
                               child: Column(
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Contact me from here!",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
+                                    style: textStyling.titleSmall,
                                   ),
                                   TextFormField(
                                     decoration: InputDecoration(
@@ -264,29 +271,47 @@ class _ContactPageState extends State<ContactPage> {
                       padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                       child: Column(
                         children: [
-                          const Text(
-                            "Download My CV",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
+                          const Flexible(
+                            flex: 2,
+                            child: Text(
+                              "Download My CV",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
                           ),
-                          const Icon(
-                            CupertinoIcons.book_circle_fill,
-                            size: 200,
+                          const Spacer(),
+                          const Flexible(
+                            flex: 8,
+                            fit: FlexFit.tight,
+                            child: FittedBox(
+                              child: Icon(
+                                CupertinoIcons.book_circle_fill,
+                              ),
+                            ),
                           ),
-                          ElevatedButton.icon(
-                              onPressed: () {
-                                downloadFile("assets/documents/DiegoSu-CV.pdf");
-                              },
-                              icon: const Icon(
-                                  CupertinoIcons.download_circle_fill),
-                              label: const Text("Download Now"))
+                          const Spacer(),
+                          Flexible(
+                            flex: 2,
+                            child: ElevatedButton.icon(
+                                onPressed: () {
+                                  downloadFile(
+                                      "assets/documents/DiegoSu-CV.pdf");
+                                },
+                                icon: const Icon(
+                                    CupertinoIcons.download_circle_fill),
+                                label: const Text("Download Now")),
+                          )
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              const Padding(
+            ),
+            const Spacer(flex: 3),
+            const Flexible(
+              flex: 25,
+              child: Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -321,8 +346,8 @@ class _ContactPageState extends State<ContactPage> {
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

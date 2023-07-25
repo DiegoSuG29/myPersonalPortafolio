@@ -28,44 +28,59 @@ class SkillCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
               color: Theme.of(context).colorScheme.inversePrimary, width: 5)),
-      width: 300,
+      width: MediaQuery.of(context).size.width * 0.2,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
-            Text(
-              name,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Flexible(
+              flex: 20,
+              child: Text(
+                name,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-            const SizedBox(height: 5),
-            FloatingActionButton.large(
-              backgroundColor: color,
-              elevation: 50,
-              onPressed: null,
-              child: flag == ""
-                  ? Icon(
-                      icon,
-                      size: 55,
-                      color: Colors.black,
-                    )
-                  : CircleFlag(flag, size: 55),
+            const Spacer(flex: 5),
+            Flexible(
+              flex: 50,
+              child: FloatingActionButton.large(
+                backgroundColor: color,
+                elevation: 50,
+                onPressed: null,
+                child: flag == ""
+                    ? Icon(
+                        icon,
+                        size: MediaQuery.of(context).size.height * 0.075,
+                        color: Colors.black,
+                      )
+                    : CircleFlag(flag,
+                        size: MediaQuery.of(context).size.height * 0.075),
+              ),
             ),
-            const SizedBox(height: 15),
-            Text(
-              description,
-              style: const TextStyle(fontSize: 14),
+            const Spacer(flex: 5),
+            Flexible(
+              flex: 20,
+              child: Text(
+                description,
+                style: const TextStyle(fontSize: 14),
+              ),
             ),
-            const SizedBox(height: 10),
-            Wrap(
-              alignment: WrapAlignment.spaceAround,
-              children: [
-                for (int i = 1; i < expertise + 1; i++)
-                  const Icon(
-                    CupertinoIcons.star_fill,
-                    color: Colors.yellow,
-                  ),
-              ],
-            )
+            const Spacer(flex: 10),
+            Flexible(
+              flex: 20,
+              child: Wrap(
+                alignment: WrapAlignment.spaceAround,
+                children: [
+                  for (int i = 1; i < expertise + 1; i++)
+                    Icon(
+                      CupertinoIcons.star_fill,
+                      color: Colors.yellow,
+                      size: MediaQuery.of(context).size.height * 0.05,
+                    ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
