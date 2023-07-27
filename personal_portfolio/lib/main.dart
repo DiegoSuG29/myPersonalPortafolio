@@ -262,68 +262,117 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ],
-          bottom: const TabBar(tabs: [
-            Tab(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.home),
-                  SizedBox(width: 10),
-                  Text(
-                    "Home",
-                  ),
-                ],
-              ),
-            ),
-            Tab(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.person),
-                  SizedBox(width: 10),
-                  Text(
-                    "About Me",
-                  ),
-                ],
-              ),
-            ),
-            Tab(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.bag_fill),
-                  SizedBox(width: 10),
-                  Text(
-                    "Portfolio",
-                  ),
-                ],
-              ),
-            ),
-            Tab(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.device_laptop),
-                  SizedBox(width: 10),
-                  Text(
-                    "Trajectory",
-                  ),
-                ],
-              ),
-            ),
-            Tab(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.phone),
-                  SizedBox(width: 10),
-                  Text(
-                    "Contact",
-                  ),
-                ],
-              ),
-            ),
-          ]),
+          bottom: MediaQuery.of(context).size.width < 685
+              ? TabBar(
+                  isScrollable: true,
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 0),
+                  tabs: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: const Tab(
+                        child: Text(
+                          "Home",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: const Tab(
+                        child: Text(
+                          "About Me",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: const Tab(
+                        child: Text(
+                          "Portfolio",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: const Tab(
+                        child: Text(
+                          "Trajectory",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: const Tab(
+                        child: Text(
+                          "Contact",
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : const TabBar(
+                  tabs: [
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(CupertinoIcons.home),
+                          SizedBox(width: 10),
+                          Text(
+                            "Home",
+                          ),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(CupertinoIcons.person),
+                          SizedBox(width: 10),
+                          Text(
+                            "About Me",
+                          ),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(CupertinoIcons.bag_fill),
+                          SizedBox(width: 10),
+                          Text(
+                            "Portfolio",
+                          ),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(CupertinoIcons.device_laptop),
+                          SizedBox(width: 10),
+                          Text(
+                            "Trajectory",
+                          ),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(CupertinoIcons.phone),
+                          SizedBox(width: 10),
+                          Text(
+                            "Contact",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
         ),
         body: const TabBarView(
             physics: NeverScrollableScrollPhysics(),

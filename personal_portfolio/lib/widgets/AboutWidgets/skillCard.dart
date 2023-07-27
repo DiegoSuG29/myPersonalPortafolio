@@ -76,7 +76,7 @@ class SkillCard extends StatelessWidget {
                     Icon(
                       CupertinoIcons.star_fill,
                       color: Colors.yellow,
-                      size: MediaQuery.of(context).size.height * 0.05,
+                      size: MediaQuery.of(context).size.width * 0.025,
                     ),
                 ],
               ),

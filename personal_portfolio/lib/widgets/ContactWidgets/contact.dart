@@ -43,7 +43,7 @@ class _ContactPageState extends State<ContactPage> {
               publicKey: "QuZv2yNU-CGx2ZkSC",
               privateKey: "U5Vk5nJsvc3YQ3N-OpSdk"));
     } catch (error) {
-      print(error.toString());
+      //
     }
     _showSimpleDialog();
   }
@@ -106,41 +106,46 @@ class _ContactPageState extends State<ContactPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: MediaQuery.of(context).size.height * 0.2,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    foregroundDecoration: BoxDecoration(
-                        border: Border.all(width: 20, color: coloring.tertiary),
-                        borderRadius: BorderRadius.circular(150)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(150),
-                      child: const Image(
-                          image: AssetImage("assets/images/me.jpg")),
+                  Flexible(
+                    child: Container(
+                      width: MediaQuery.of(context).size.height * 0.2,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      foregroundDecoration: BoxDecoration(
+                          border:
+                              Border.all(width: 20, color: coloring.tertiary),
+                          borderRadius: BorderRadius.circular(150)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(150),
+                        child: const Image(
+                            image: AssetImage("assets/images/me.jpg")),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 15),
-                  Card(
-                    color: coloring.primary,
-                    elevation: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        children: [
-                          Flexible(
-                            flex: 2,
-                            child: Text(
-                              "Contact Me",
-                              style: textStyling.titleMedium,
+                  Flexible(
+                    child: Card(
+                      color: coloring.primary,
+                      elevation: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            Flexible(
+                              flex: 2,
+                              child: Text(
+                                "Contact Me",
+                                style: textStyling.titleMedium,
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          const Flexible(
-                            flex: 2,
-                            child: Text(
-                                "Get my information, socials, and where you can find me",
-                                style: TextStyle(fontSize: 20)),
-                          ),
-                        ],
+                            const Spacer(),
+                            const Flexible(
+                              flex: 2,
+                              child: Text(
+                                  "Get my information, socials, and where you can find me",
+                                  style: TextStyle(fontSize: 20)),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -153,110 +158,112 @@ class _ContactPageState extends State<ContactPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Card(
-                    color: coloring.primary,
-                    elevation: 50,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      height: MediaQuery.of(context).size.height * 0.45,
-                      child: RawScrollbar(
-                        thumbColor: coloring.inversePrimary,
-                        thumbVisibility: true,
-                        scrollbarOrientation: ScrollbarOrientation.right,
-                        controller: scrollbarController,
-                        child: SingleChildScrollView(
+                  Flexible(
+                    child: Card(
+                      color: coloring.primary,
+                      elevation: 50,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        child: RawScrollbar(
+                          thumbColor: coloring.inversePrimary,
+                          thumbVisibility: true,
+                          scrollbarOrientation: ScrollbarOrientation.right,
                           controller: scrollbarController,
-                          child: Form(
-                            key: _formKey,
-                            onChanged: (() {
-                              setState(() {
-                                enableButton =
-                                    _formKey.currentState!.validate();
-                              });
-                            }),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 18, vertical: 18),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "Contact me from here!",
-                                    style: textStyling.titleSmall,
-                                  ),
-                                  TextFormField(
-                                    decoration: InputDecoration(
-                                      icon: const Icon(CupertinoIcons.person),
-                                      labelText: "Your E-mail",
-                                      labelStyle: TextStyle(
-                                          color: coloring.inversePrimary),
-                                      iconColor: coloring.inversePrimary,
+                          child: SingleChildScrollView(
+                            controller: scrollbarController,
+                            child: Form(
+                              key: _formKey,
+                              onChanged: (() {
+                                setState(() {
+                                  enableButton =
+                                      _formKey.currentState!.validate();
+                                });
+                              }),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18, vertical: 18),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "Contact me from here!",
+                                      style: textStyling.titleSmall,
                                     ),
-                                    style: TextStyle(
-                                        color: coloring.inversePrimary),
-                                    cursorColor: coloring.tertiary,
-                                    controller: emailController,
-                                    validator: ((value) {
-                                      if (value!.isEmpty) {
-                                        return 'Email is required';
-                                      } else if (!value.contains('@')) {
-                                        return 'Please enter a valid email address';
-                                      }
-                                      return null;
-                                    }),
-                                  ),
-                                  TextFormField(
-                                    decoration: InputDecoration(
-                                      icon: const Icon(CupertinoIcons.pencil),
-                                      labelText: "Subject",
-                                      labelStyle: TextStyle(
-                                          color: coloring.inversePrimary),
-                                      iconColor: coloring.inversePrimary,
-                                    ),
-                                    style: TextStyle(
-                                        color: coloring.inversePrimary),
-                                    cursorColor: coloring.tertiary,
-                                    controller: subjectController,
-                                    validator: ((value) {
-                                      if (value!.isEmpty) {
-                                        return 'Subject is required';
-                                      }
-                                      return null;
-                                    }),
-                                  ),
-                                  TextFormField(
+                                    TextFormField(
                                       decoration: InputDecoration(
-                                        labelText: "Your Message",
+                                        icon: const Icon(CupertinoIcons.person),
+                                        labelText: "Your E-mail",
                                         labelStyle: TextStyle(
-                                          color: coloring.inversePrimary,
-                                        ),
+                                            color: coloring.inversePrimary),
                                         iconColor: coloring.inversePrimary,
                                       ),
                                       style: TextStyle(
-                                        color: coloring.inversePrimary,
-                                      ),
+                                          color: coloring.inversePrimary),
                                       cursorColor: coloring.tertiary,
-                                      maxLines: 2,
-                                      controller: messageController,
+                                      controller: emailController,
                                       validator: ((value) {
                                         if (value!.isEmpty) {
-                                          setState(() {
-                                            enableButton = true;
-                                          });
-                                          return 'Message is required';
+                                          return 'Email is required';
+                                        } else if (!value.contains('@')) {
+                                          return 'Please enter a valid email address';
                                         }
                                         return null;
-                                      })),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: ElevatedButton.icon(
-                                      onPressed:
-                                          enableButton ? sendEmail : null,
-                                      icon: const Icon(
-                                          CupertinoIcons.arrow_right_square),
-                                      label: const Text("Send"),
+                                      }),
                                     ),
-                                  )
-                                ],
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        icon: const Icon(CupertinoIcons.pencil),
+                                        labelText: "Subject",
+                                        labelStyle: TextStyle(
+                                            color: coloring.inversePrimary),
+                                        iconColor: coloring.inversePrimary,
+                                      ),
+                                      style: TextStyle(
+                                          color: coloring.inversePrimary),
+                                      cursorColor: coloring.tertiary,
+                                      controller: subjectController,
+                                      validator: ((value) {
+                                        if (value!.isEmpty) {
+                                          return 'Subject is required';
+                                        }
+                                        return null;
+                                      }),
+                                    ),
+                                    TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: "Your Message",
+                                          labelStyle: TextStyle(
+                                            color: coloring.inversePrimary,
+                                          ),
+                                          iconColor: coloring.inversePrimary,
+                                        ),
+                                        style: TextStyle(
+                                          color: coloring.inversePrimary,
+                                        ),
+                                        cursorColor: coloring.tertiary,
+                                        maxLines: 2,
+                                        controller: messageController,
+                                        validator: ((value) {
+                                          if (value!.isEmpty) {
+                                            setState(() {
+                                              enableButton = true;
+                                            });
+                                            return 'Message is required';
+                                          }
+                                          return null;
+                                        })),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10),
+                                      child: ElevatedButton.icon(
+                                        onPressed:
+                                            enableButton ? sendEmail : null,
+                                        icon: const Icon(
+                                            CupertinoIcons.arrow_right_square),
+                                        label: const Text("Send"),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -264,44 +271,46 @@ class _ContactPageState extends State<ContactPage> {
                       ),
                     ),
                   ),
-                  Card(
-                    color: coloring.primary,
-                    elevation: 50,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      child: Column(
-                        children: [
-                          const Flexible(
-                            flex: 2,
-                            child: Text(
-                              "Download My CV",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 25),
-                            ),
-                          ),
-                          const Spacer(),
-                          const Flexible(
-                            flex: 8,
-                            fit: FlexFit.tight,
-                            child: FittedBox(
-                              child: Icon(
-                                CupertinoIcons.book_circle_fill,
+                  Flexible(
+                    child: Card(
+                      color: coloring.primary,
+                      elevation: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        child: Column(
+                          children: [
+                            const Flexible(
+                              flex: 2,
+                              child: Text(
+                                "Download My CV",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 25),
                               ),
                             ),
-                          ),
-                          const Spacer(),
-                          Flexible(
-                            flex: 2,
-                            child: ElevatedButton.icon(
-                                onPressed: () {
-                                  downloadFile(
-                                      "assets/documents/DiegoSu-CV.pdf");
-                                },
-                                icon: const Icon(
-                                    CupertinoIcons.download_circle_fill),
-                                label: const Text("Download Now")),
-                          )
-                        ],
+                            const Spacer(),
+                            const Flexible(
+                              flex: 8,
+                              fit: FlexFit.tight,
+                              child: FittedBox(
+                                child: Icon(
+                                  CupertinoIcons.book_circle_fill,
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                            Flexible(
+                              flex: 2,
+                              child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    downloadFile(
+                                        "assets/documents/DiegoSu-CV.pdf");
+                                  },
+                                  icon: const Icon(
+                                      CupertinoIcons.download_circle_fill),
+                                  label: const Text("Download Now")),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
