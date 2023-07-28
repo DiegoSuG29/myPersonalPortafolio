@@ -25,14 +25,15 @@ class HomePageButton extends StatelessWidget {
         child: Column(
           children: [
             Flexible(
-              flex: 2,
+              flex: 4,
               child: Text(
                 title,
                 style: textStyling.titleSmall,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             Flexible(
-              flex: 8,
+              flex: 10,
               fit: FlexFit.tight,
               child: FittedBox(
                 child: Icon(
@@ -41,15 +42,17 @@ class HomePageButton extends StatelessWidget {
               ),
             ),
             Flexible(
-              flex: 2,
+              flex: 4,
               child: Text(
                 description,
                 textAlign: TextAlign.center,
                 style: textStyling.bodySmall,
+                overflow: TextOverflow.clip,
+                softWrap: true,
               ),
             ),
             Flexible(
-              flex: 2,
+              flex: 1,
               child: Padding(
                 padding: const EdgeInsets.only(top: 5),
                 child: IconButton(
