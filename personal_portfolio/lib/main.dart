@@ -272,6 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Tab(
                         child: Text(
                           "Home",
+                          style: TextStyle(fontSize: 14),
                         ),
                       ),
                     ),
@@ -280,6 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Tab(
                         child: Text(
                           "About Me",
+                          style: TextStyle(fontSize: 14),
                         ),
                       ),
                     ),
@@ -288,6 +290,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Tab(
                         child: Text(
                           "Portfolio",
+                          style: TextStyle(fontSize: 14),
                         ),
                       ),
                     ),
@@ -296,6 +299,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Tab(
                         child: Text(
                           "Trajectory",
+                          style: TextStyle(fontSize: 14),
                         ),
                       ),
                     ),
@@ -304,6 +308,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Tab(
                         child: Text(
                           "Contact",
+                          style: TextStyle(fontSize: 14),
                         ),
                       ),
                     ),

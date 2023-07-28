@@ -72,7 +72,10 @@ class ProjectWidget extends StatelessWidget {
                       child: Text(
                         description,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: MediaQuery.of(context).size.width <
+                                  MediaQuery.of(context).size.height
+                              ? 14
+                              : 16,
                           color: coloring.inversePrimary,
                         ),
                         softWrap: true,

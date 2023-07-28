@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
+// ignore_for_file: avoid_web_libraries_in_flutter, non_constant_identifier_names
 
 import 'dart:html';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +21,7 @@ class _ContactPageState extends State<ContactPage> {
   TextEditingController subjectController = TextEditingController(text: "");
   TextEditingController messageController = TextEditingController(text: "");
   ScrollController scrollbarController = ScrollController();
+  ScrollController horizontalController = ScrollController();
 
   downloadFile(url) {
     AnchorElement anchorElement = AnchorElement(href: url);
@@ -90,12 +91,250 @@ class _ContactPageState extends State<ContactPage> {
     subjectController.dispose();
     messageController.dispose();
     scrollbarController.dispose();
+    horizontalController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final coloring = Theme.of(context).colorScheme;
     final textStyling = Theme.of(context).textTheme;
+    return MediaQuery.of(context).size.width <
+            MediaQuery.of(context).size.height
+        ? ContactPageMobile(context, coloring, textStyling)
+        : ContactPageDesktop(context, coloring, textStyling);
+  }
+
+  Padding ContactPageMobile(
+      BuildContext context, ColorScheme coloring, TextTheme textStyling) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      child: Center(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.height * 0.3,
+                height: MediaQuery.of(context).size.height * 0.3,
+                foregroundDecoration: BoxDecoration(
+                    border: Border.all(width: 20, color: coloring.tertiary),
+                    borderRadius: BorderRadius.circular(150)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(150),
+                  child: const Image(image: AssetImage("assets/images/me.jpg")),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+              Card(
+                color: coloring.primary,
+                elevation: 50,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Contact Me",
+                        style: textStyling.titleMedium,
+                      ),
+                      const Text(
+                        "Get my information, socials, and where you can find me",
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+              Card(
+                color: coloring.primary,
+                elevation: 50,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.45,
+                  child: RawScrollbar(
+                    thumbColor: coloring.inversePrimary,
+                    thumbVisibility: true,
+                    scrollbarOrientation: ScrollbarOrientation.right,
+                    controller: scrollbarController,
+                    child: SingleChildScrollView(
+                      controller: scrollbarController,
+                      child: Form(
+                        key: _formKey,
+                        onChanged: (() {
+                          setState(() {
+                            enableButton = _formKey.currentState!.validate();
+                          });
+                        }),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 18, vertical: 18),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Contact me from here!",
+                                style: textStyling.titleSmall,
+                              ),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  icon: const Icon(CupertinoIcons.person),
+                                  labelText: "Your E-mail",
+                                  labelStyle:
+                                      TextStyle(color: coloring.inversePrimary),
+                                  iconColor: coloring.inversePrimary,
+                                ),
+                                style:
+                                    TextStyle(color: coloring.inversePrimary),
+                                cursorColor: coloring.tertiary,
+                                controller: emailController,
+                                validator: ((value) {
+                                  if (value!.isEmpty) {
+                                    return 'Email is required';
+                                  } else if (!value.contains('@')) {
+                                    return 'Please enter a valid email address';
+                                  }
+                                  return null;
+                                }),
+                              ),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  icon: const Icon(CupertinoIcons.pencil),
+                                  labelText: "Subject",
+                                  labelStyle:
+                                      TextStyle(color: coloring.inversePrimary),
+                                  iconColor: coloring.inversePrimary,
+                                ),
+                                style:
+                                    TextStyle(color: coloring.inversePrimary),
+                                cursorColor: coloring.tertiary,
+                                controller: subjectController,
+                                validator: ((value) {
+                                  if (value!.isEmpty) {
+                                    return 'Subject is required';
+                                  }
+                                  return null;
+                                }),
+                              ),
+                              TextFormField(
+                                  decoration: InputDecoration(
+                                    labelText: "Your Message",
+                                    labelStyle: TextStyle(
+                                      color: coloring.inversePrimary,
+                                    ),
+                                    iconColor: coloring.inversePrimary,
+                                  ),
+                                  style: TextStyle(
+                                    color: coloring.inversePrimary,
+                                  ),
+                                  cursorColor: coloring.tertiary,
+                                  maxLines: 2,
+                                  controller: messageController,
+                                  validator: ((value) {
+                                    if (value!.isEmpty) {
+                                      setState(() {
+                                        enableButton = true;
+                                      });
+                                      return 'Message is required';
+                                    }
+                                    return null;
+                                  })),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: ElevatedButton.icon(
+                                  onPressed: enableButton ? sendEmail : null,
+                                  icon: const Icon(
+                                      CupertinoIcons.arrow_right_square),
+                                  label: const Text("Send"),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+              Card(
+                color: coloring.primary,
+                elevation: 50,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  child: Column(
+                    children: [
+                      const Text(
+                        "Download My CV",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                      FittedBox(
+                        child: Icon(
+                          CupertinoIcons.book_circle_fill,
+                          size: MediaQuery.of(context).size.width * 0.3,
+                        ),
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          downloadFile("assets/documents/DiegoSu-CV.pdf");
+                        },
+                        icon: const Icon(CupertinoIcons.download_circle_fill),
+                        label: const Text("Download Now"),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+              RawScrollbar(
+                controller: horizontalController,
+                scrollbarOrientation: ScrollbarOrientation.bottom,
+                child: SingleChildScrollView(
+                  controller: horizontalController,
+                  scrollDirection: Axis.horizontal,
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ContactCard(
+                          name: "Email",
+                          value: "diego.su@hotmail.com",
+                          icon: CupertinoIcons.mail_solid),
+                      ContactCard(
+                          name: "Discord",
+                          value: "diegosu.29",
+                          icon: SimpleIcons.discord),
+                      ContactCard(
+                        name: "Instagram",
+                        value: "diegosug",
+                        icon: SimpleIcons.instagram,
+                        link: "https://www.instagram.com/diegosug/",
+                      ),
+                      ContactCard(
+                        name: "GitHub",
+                        value: "DiegoSuG29",
+                        icon: SimpleIcons.github,
+                        link: "https://github.com/DiegoSuG29",
+                      ),
+                      ContactCard(
+                        name: "Linked In",
+                        value: "Diego Sú Gómez",
+                        icon: SimpleIcons.linkedin,
+                        link:
+                            "https://www.linkedin.com/in/diego-s%C3%BA-g%C3%B3mez-455427227/",
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding ContactPageDesktop(
+      BuildContext context, ColorScheme coloring, TextTheme textStyling) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Center(
@@ -163,7 +402,7 @@ class _ContactPageState extends State<ContactPage> {
                       color: coloring.primary,
                       elevation: 50,
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.6,
+                        width: MediaQuery.of(context).size.width * 0.75,
                         height: MediaQuery.of(context).size.height * 0.45,
                         child: RawScrollbar(
                           thumbColor: coloring.inversePrimary,
@@ -317,7 +556,7 @@ class _ContactPageState extends State<ContactPage> {
                 ],
               ),
             ),
-            const Spacer(flex: 3),
+            const Spacer(flex: 2),
             const Flexible(
               flex: 25,
               child: Padding(

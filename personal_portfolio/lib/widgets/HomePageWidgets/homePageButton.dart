@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -58,8 +60,8 @@ class HomePageButton extends StatelessWidget {
                 child: IconButton(
                   onPressed: () =>
                       DefaultTabController.of(context).animateTo(index),
-                  icon: const Icon(CupertinoIcons.arrow_right),
-                  iconSize: 35,
+                  icon: const Icon(CupertinoIcons.arrow_right_circle_fill),
+                  iconSize: 40,
                 ),
               ),
             ),

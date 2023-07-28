@@ -64,8 +64,8 @@ class AboutMeMobile extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: MediaQuery.of(context).size.height * 0.2,
-                height: MediaQuery.of(context).size.height * 0.2,
+                width: MediaQuery.of(context).size.height * 0.35,
+                height: MediaQuery.of(context).size.height * 0.35,
                 foregroundDecoration: BoxDecoration(
                     border: Border.all(width: 20, color: coloring.tertiary),
                     borderRadius: BorderRadius.circular(150)),
@@ -74,6 +74,7 @@ class AboutMeMobile extends StatelessWidget {
                   child: const Image(image: AssetImage("assets/images/me.jpg")),
                 ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Card(
                 color: coloring.primary,
                 child: SizedBox(
@@ -95,6 +96,7 @@ class AboutMeMobile extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               RawScrollbar(
                 controller: scrollController,
                 scrollbarOrientation: ScrollbarOrientation.bottom,
@@ -583,16 +585,16 @@ class AboutMeDesktop extends StatelessWidget {
                   child: Card(
                     color: coloring.primary,
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: MediaQuery.of(context).size.width,
                       child: Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 10),
                           child: Text(
-                            "Hi, my name is Diego Sú Gómez. I'm a mexican of 21 years of age who is studying a Bachelor in Computer Science at Tec de Monterrey Campus Guadalajara. I am set to graduate in summer '24, and decided to create this website to showcase my portfolio, CV and skills I possess. I am a big fan of coding, web design, data science and math, as well as having other hobbies such as playing and watching both soccer & basketball. I am a fan of Real Madrid & the Denver Nuggets. I also enjoy watching series, listening to music and hangingout with my friends. I am a very competitive and motivated person, who is always looking to improve and grow.",
+                            "Hi, my name is Diego Sú Gómez. I'm a mexican of 21 years of age who is studying a Bachelor in Computer Science at Tec de Monterrey Campus Guadalajara. I am set to graduate in summer '24, and decided to create this website to showcase my portfolio, CV and skills I possess. I am a big fan of coding, web design, data science and math, as well as having other hobbies such as playing and watching both soccer & basketball. I am a fan of Real Madrid & the Denver Nuggets. I also enjoy watching series, listening to music and hanging out with my friends. I am a very competitive and motivated person, who is always looking to improve and grow.",
                             softWrap: true,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                               color: coloring.inversePrimary,
                             ),
                             overflow: TextOverflow.clip,

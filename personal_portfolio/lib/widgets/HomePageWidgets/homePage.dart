@@ -45,34 +45,25 @@ class _HomePageMobileState extends State<HomePageMobile> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            Flexible(
-              flex: 20,
-              fit: FlexFit.loose,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.35,
-                  height: MediaQuery.of(context).size.width * 0.35,
-                  foregroundDecoration: BoxDecoration(
-                    border:
-                        Border.all(width: 20, color: widget.coloring.tertiary),
-                    borderRadius: BorderRadius.circular(150),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(150),
-                    child:
-                        const Image(image: AssetImage("assets/images/me.jpg")),
-                  ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.height * 0.35,
+                height: MediaQuery.of(context).size.height * 0.35,
+                foregroundDecoration: BoxDecoration(
+                  border:
+                      Border.all(width: 20, color: widget.coloring.tertiary),
+                  borderRadius: BorderRadius.circular(150),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(150),
+                  child: const Image(image: AssetImage("assets/images/me.jpg")),
                 ),
               ),
-            ),
-            const Spacer(),
-            Flexible(
-              flex: 20,
-              fit: FlexFit.loose,
-              child: Card(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              Card(
                 elevation: 50,
                 borderOnForeground: true,
                 color: widget.coloring.primary,
@@ -111,46 +102,55 @@ class _HomePageMobileState extends State<HomePageMobile> {
                   ),
                 ),
               ),
-            ),
-            const Spacer(),
-            Flexible(
-              flex: 25,
-              child: RawScrollbar(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              RawScrollbar(
                 controller: scrollController,
                 scrollbarOrientation: ScrollbarOrientation.bottom,
                 child: SingleChildScrollView(
                   controller: scrollController,
                   scrollDirection: Axis.horizontal,
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      HomePageButton(
-                        title: "My Projects",
-                        icon: CupertinoIcons.folder_fill,
-                        description:
-                            "Review my featured projects and gain more insight on what I've done",
-                        index: 2,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        child: const HomePageButton(
+                          title: "My Projects",
+                          icon: CupertinoIcons.folder_fill,
+                          description:
+                              "Review my featured projects and gain more insight on what I've done",
+                          index: 2,
+                        ),
                       ),
-                      HomePageButton(
-                        title: "Academic/Professional History",
-                        icon: CupertinoIcons.book,
-                        description:
-                            "Information about my trajectory and my professional experience",
-                        index: 3,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        child: const HomePageButton(
+                          title: "Academic/Professional History",
+                          icon: CupertinoIcons.book,
+                          description:
+                              "Information about my trajectory and my professional experience",
+                          index: 3,
+                        ),
                       ),
-                      HomePageButton(
-                        title: "Contact Me",
-                        icon: CupertinoIcons.phone_circle,
-                        description:
-                            "Get my contact information and my CV for download",
-                        index: 4,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        child: const HomePageButton(
+                            title: "Contact Me",
+                            icon: CupertinoIcons.phone_circle,
+                            description:
+                                "Get my contact information and my CV for download",
+                            index: 4),
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            ],
+          ),
         ),
       ),
     );
@@ -254,9 +254,9 @@ class HomePageDesktop extends StatelessWidget {
               ],
             ),
           ),
-          const Spacer(flex: 10),
+          const Spacer(flex: 5),
           const Flexible(
-            flex: 45,
+            flex: 50,
             fit: FlexFit.loose,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

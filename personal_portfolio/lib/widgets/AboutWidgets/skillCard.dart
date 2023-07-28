@@ -28,7 +28,7 @@ class SkillCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
               color: Theme.of(context).colorScheme.inversePrimary, width: 5)),
-      width: MediaQuery.of(context).size.width * 0.2,
+      width: MediaQuery.of(context).size.width * 0.5,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
@@ -76,7 +76,10 @@ class SkillCard extends StatelessWidget {
                     Icon(
                       CupertinoIcons.star_fill,
                       color: Colors.yellow,
-                      size: MediaQuery.of(context).size.width * 0.025,
+                      size: MediaQuery.of(context).size.width >
+                              MediaQuery.of(context).size.height
+                          ? MediaQuery.of(context).size.width * 0.025
+                          : MediaQuery.of(context).size.width * 0.05,
                     ),
                 ],
               ),

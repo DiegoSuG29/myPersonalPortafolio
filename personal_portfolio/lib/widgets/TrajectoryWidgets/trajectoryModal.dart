@@ -57,149 +57,154 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
               ],
             ),
             alignment: Alignment.topLeft,
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      margin: const EdgeInsets.only(top: 5, left: 10),
-                      child: Text(
-                        widget.name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w900,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(top: 5, left: 10),
+                        child: Text(
+                          widget.name,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(top: 5, right: 5),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              "Close",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: coloring.inversePrimary,
+                              ),
+                            ),
+                          )),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          width: 1,
                         ),
                       ),
                     ),
-                    Container(
-                        margin: const EdgeInsets.only(top: 5, right: 5),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            "Close",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: coloring.inversePrimary,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          RichText(
+                            textAlign: TextAlign.justify,
+                            text: TextSpan(
+                                text: widget.school,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  wordSpacing: 1,
+                                  color: coloring.inversePrimary,
+                                )),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Image(
+                            image: AssetImage(widget.img),
+                            width: 100,
+                            height: 100,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(CupertinoIcons.location_solid),
+                                Text(
+                                  widget.location,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                              ],
                             ),
                           ),
-                        )),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                        width: 1,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(CupertinoIcons.calendar),
+                                Text(
+                                  widget.years,
+                                  style: const TextStyle(fontSize: 18),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: widget.job
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                            text: widget.description,
+                                            style: TextStyle(
+                                                color:
+                                                    coloring.inversePrimary)),
+                                        textAlign: TextAlign.justify,
+                                      )
+                                    ],
+                                  )
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "GPA: ",
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      Text(
+                                        widget.gpa,
+                                        style: const TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                          ),
+                          widget.link == ""
+                              ? const SizedBox()
+                              : Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {
+                                            html.window
+                                                .open(widget.link, 'new tab');
+                                          },
+                                          icon: const Icon(CupertinoIcons.link))
+                                    ],
+                                  ),
+                                ),
+                        ],
                       ),
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RichText(
-                          textAlign: TextAlign.justify,
-                          text: TextSpan(
-                              text: widget.school,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                wordSpacing: 1,
-                                color: coloring.inversePrimary,
-                              )),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Image(
-                          image: AssetImage(widget.img),
-                          width: 100,
-                          height: 100,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(CupertinoIcons.location_solid),
-                              Text(
-                                widget.location,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(CupertinoIcons.calendar),
-                              Text(
-                                widget.years,
-                                style: const TextStyle(fontSize: 18),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: widget.job
-                              ? Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(
-                                          text: widget.description,
-                                          style: TextStyle(
-                                              color: coloring.inversePrimary)),
-                                      textAlign: TextAlign.justify,
-                                    )
-                                  ],
-                                )
-                              : Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "GPA: ",
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    Text(
-                                      widget.gpa,
-                                      style: const TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                        ),
-                        widget.link == ""
-                            ? const SizedBox()
-                            : Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {
-                                          html.window
-                                              .open(widget.link, 'new tab');
-                                        },
-                                        icon: const Icon(CupertinoIcons.link))
-                                  ],
-                                ),
-                              ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -235,6 +240,7 @@ class _TrajectoryModalState extends State<TrajectoryModal> {
                   widget.name,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 20),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
